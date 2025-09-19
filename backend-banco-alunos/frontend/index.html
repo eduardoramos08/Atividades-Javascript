@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Escola SENAI</h1>
+    <form id="form_aluno">
+    <div>
+        <label for="">nome*:
+            <input type="text" id="Nome" placeholder="digite o nome">
+        </label>
+    </div>
+    <div>
+        <label
+        for="">cpf*:<input type="text" id="Cpf" maxlength="11" placeholder="digite o CPF">
+        </label>
+    </div>
+    <div>
+        <label 
+        for="">cep:<input type="text" id="Cep" placeholder="digite o CEP'">
+        </label>
+    </div>
+    <div>
+        <label 
+        for="">uf:<input type="text" id="UF" placeholder="digite o UF">
+        </label>
+    </div>
+    <div>
+        <label 
+        for="">rua:<input type="text" id="Rua" placeholder="digite a rua">
+        </label>
+    </div>
+    <div>
+        <label
+        for="">numero:<input type="number" id="Numero" placeholder="digite o numero">
+        </label>
+    </div>
+
+    <div>
+        <label
+        for="">complemento:<input type="text" id="Complemento" placeholder="digite o complemento">
+        </label>
+    </div>
+
+    <button type="submit">Enviar</button>
+    <button type="button">Limpar</button>
+</form>
+
+<h2>Lista de Alunos</h2>
+     <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+
+            <tr>
+                <td>ID</td>
+                <td>NOME</td>
+                <td>CPF</td>
+                <td>CEP</td>
+                <td>UF</td>
+                <td>Rua</td>
+                <td>Numero</td>
+                <td>Complemento</td>
+            </tr>
+        </thead>
+        <TBOdy id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitor</td>
+                <td>12345678900</td>
+                <td>06000000</td>
+                <td>RJ</td>
+                <td>Rua senai</td>
+                <td>1</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>nicolas</td>
+                <td>12345678980</td>
+                <td>06000001</td>
+                <td>SP</td>
+                <td>Rua senai</td>
+                <td>1</td>
+                <td>-</td>
+            </tr>
+        </TBOdy>
+     </table>
+     <script src="./app.js"></script>
+</body>
+
+</html>
