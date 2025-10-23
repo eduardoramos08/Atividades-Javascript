@@ -1,4 +1,6 @@
-console.log("app.js funcionando")
+console.log("app.js funcionando");
+
+const API = "http://localhost:3000/alunos"; // Defina a URL da API
 
 let alunos = [
     {
@@ -36,58 +38,38 @@ let alunos = [
         "complemento": "Casa 1",
         "create_at": "2025-09-16T11:59:30.000Z",
         "update_at": "2025-09-16T11:59:30.000Z"
-    },
-   
-]
-
-function carregarTabela() {
-    const tbody = document.getElementById("tbody")
-
-    tbody.innerHTML = "<tr><td colspan='10'>Carregando...</td></tr>"
-
-    // setTimeout(() => {
-        tbody.innerHTML = "";
-        tbody.innerHTML = alunos.map(a =>
-            `<tr>
-                <td>${a.id}</td>
-                <td>${a.nome}</td>
-                <td>${a.cpf}</td>
-                <td>${a.cep}</td>
-                <td>${a.uf}</td>
-                <td>${a.rua} senai</td>
-                <td>${a.numero}</td>
-                <td>${a.complemento}</td>
-            </tr>`
-        ).join("");
-    // }, 2000) // 5 segundos
-}
-
-const inputNome = document.getElementById("nome")
-const inputCpf = document.getElementById("cpf")
-const inputCep = document.getElementById("cep")
-const inputUf = document.getElementById("uf")
-const inputRua = document.getElementById("rua")
-const inputNumero = document.getElementById("numero")
-const inputComplemento = document.getElementById("complemento")
-const formAluno = document.getElementById("form-aluno")
-
-
-function salvar(e) {
-    e.preventDefault();
-    console.log("Salvando aluno");
-    const nome = inputNome.value.trim();
-    const cpf = inputCpf.value.trim();
-    const cep = inputCep.value.trim();
-    const uf = inputUf.value.trim();
-    const rua = inputRua.value.trim();
-    const numero = inputNumero.value.trim();
-    const complemento = inputComplemento.value.trim();
-    const novoAluno = {
-        nome, cpf, cep, uf, rua, numero, complemento
     }
-    alunos.push(novoAluno);
-    console.log(alunos)
-    carregarTabela()
+];
+
+async function carregarTabela() {
+    try {
+        const resposta = await fetch(API);
+        const dados = await resposta.json();
+        alunos = dados; // Atualiza lista local com a API
+    } catch (error) {
+        console.error(error.message);
+    }
+
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = "<tr><td colspan='10'>Carregando...</td></tr>";
+
+    tbody.innerHTML = alunos.map(a =>
+        `<tr>
+            <td>${a.id}</td>
+            <td>${a.nome}</td>
+            <td>${a.cpf}</td>
+            <td>${a.cep}</td>
+            <td>${a.uf}</td>
+            <td>${a.rua}</td>
+            <td>${a.numero}</td>
+            <td>${a.complemento ?? ""}</td>
+            <td>
+                <button><a href="editar.html">Editar</a></button>
+                <button><a href="excluir.html">Excluir</a>/button>
+            <td>
+        </tr>`
+    ).join("");
 }
 
-formAluno.addEventListener("submit",salvar)
+
+carregarTabela();
